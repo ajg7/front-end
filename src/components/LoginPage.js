@@ -7,9 +7,10 @@ const LoginPage = props => {
 
     return(
         <>
-            <h1>Login</h1>
-            <h3>or Sign Up</h3>
-            <button Link={Form.js}>Sign Up</button>
+            <h2>Login</h2>
+            <Link to="/login"><button>Log In</button></Link>
+            <h2>Sign Up</h2>
+            <Link to ="/signup"><button>Sign Up</button></Link>
         </>
     )
 }
