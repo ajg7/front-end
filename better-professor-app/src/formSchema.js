@@ -18,3 +18,6 @@ const formSchema = yup.object().shape({
     classSection: yup
         .string()
 })
+
+
+export default formSchema;
