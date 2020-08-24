@@ -11,9 +11,9 @@ const LoginPage = props => {
     return(
         <>
             <h2>Login</h2>
-            <Link to="/login/form"><button>Log In</button></Link>
+            <Link to="/login"><button>Log In</button></Link>
             <h2>Sign Up</h2>
-            <button>Sign Up</button>
+            <Link to ="/signup"><button>Sign Up</button></Link>
         </>
     )
 }

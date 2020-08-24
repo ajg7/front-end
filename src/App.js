@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard'
 import AddPage from './components/AddPage'
 import LoginPage from './components/LoginPage'
 import Form from './components/Form'
+import SignupForm from "./components/SignupForm"
 
 import './App.css';
 
@@ -15,8 +16,9 @@ function App() {
     <div className="App">
       <Switch>
         {/* <PrivateRoute exact path="/protected" component={Dashboard} /> */}
-        <Route exact path="/login" component={LoginPage} /> 
-        <Route exact path="/login/form" component={Form} /> 
+        <Route exact path="/" component={LoginPage} /> 
+        <Route exact path="/login" component={Form} /> 
+        <Route exact path="/signup" component={SignupForm} />
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/add" component={AddPage} />
       </Switch>
