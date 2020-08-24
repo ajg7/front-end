@@ -5,9 +5,6 @@ import Form from "./Form.js";
 
 const LoginPage = props => {
 
-    
-
-
     return(
         <>
             <h2>Login</h2>
