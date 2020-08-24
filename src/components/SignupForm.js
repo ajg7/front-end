@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import formSchema from "../formSchema";
+import axios from "axios";
 import * as yup from "yup";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom"
 
 
-const Form = () => {
+
+const SignupForm = () => {
 
     const history = useHistory();
+
 
     const initialFormValues = {
         username: "",
@@ -23,6 +26,7 @@ const Form = () => {
     const [loginObj, setLoginObj] = useState({});
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
+
 
     const inputChange = (name, value) => {
         yup
@@ -53,17 +57,18 @@ const Form = () => {
 
     const submit = event => {
         event.preventDefault();
-        const existingUser ={
+        const newUser ={
             username: formValues.username.trim(),
             password: formValues.password.trim()
         }
-        axiosWithAuth().post("/auth/login", existingUser)
+        axiosWithAuth().post("/auth/register", newUser)
             .then(response => {
                 console.log(response)
-                {/*localStorage.setItem("token", response.data.token)*/}
+                localStorage.setItem("token", response.data.token)
                 history.push("/protected");
             })
     }
+
 
 
     return(
@@ -97,4 +102,4 @@ const Form = () => {
     )
 }
 
-export default Form;
+export default SignupForm;
