@@ -16,6 +16,11 @@ const Form = props => {
                     type="email"
                     />
                 </label>
+                <label> Password:
+                    <input 
+                    type="password"
+                    />
+                </label>
                 <label> Class Name: 
                     <input 
                     type="text"
