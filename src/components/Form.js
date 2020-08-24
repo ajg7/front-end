@@ -15,35 +15,17 @@ const Form = props => {
     return(
         <>
             <form>
-                <label> Name:
+                <label> Username:
                     <input 
                     type="text"
-                    name="name"
+                    name="username"
                     />                
-                </label>
-                <label> Email:
-                    <input 
-                    type="email"
-                    name="email"
-                    />
                 </label>
                 <label> Password:
                     <input 
                     type="password"
                     name="password"
                     />
-                </label>
-                <label> Class Name: 
-                    <input 
-                    type="text"
-                    name="class name"
-                    />  
-                </label>
-                <label> Class Section: 
-                    <input 
-                    type="text"
-                    name="class section"
-                    />  
                 </label>
             </form>
         </>

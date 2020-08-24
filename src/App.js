@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Link, Switch } from "react-router-dom";
 import * as yup from "yup";
-import formSchema from "../formSchema.js";
+import formSchema from "../src/formSchema";
 
 import Dashboard from './components/Dashboard'
 import AddPage from './components/AddPage'
@@ -15,8 +15,8 @@ function App() {
     <div className="App">
       <Switch>
         {/* <PrivateRoute exact path="/protected" component={Dashboard} /> */}
-        <Route path="/login" component={LoginPage} /> 
-        <Route path="/login/form" component={Form} /> 
+        <Route exact path="/login" component={LoginPage} /> 
+        <Route exact path="/login/form" component={Form} /> 
         <Route path="/dashboard" component={Dashboard} />
         <Route path="/add" component={AddPage} />
       </Switch>
