@@ -1,0 +1,1 @@
+export { professorReducer } from './_professorReducer'
