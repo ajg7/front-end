@@ -11,6 +11,8 @@ const AddPage = () => {
           name='name'
           placeholder='Student Name'
         />
+        <br/>
+        <button>Add Student</button>
       </div>
       <div>
         <h2>Add Assignment</h2>
@@ -24,16 +26,27 @@ const AddPage = () => {
           name='date'
           placeholder='Due Date'
         />
+        <br/>
+        <button>Add Assignment</button>
       </div>
       <div>
         <h2>Add Auto Message</h2>
-        <select id="cars" name="cars">
+        <select id="students" name="students">
           <option value="">Myself</option>
-          <option value="Sam">Sam Fsher</option>
+          <option value="Sam">Sam Fisher</option>
           <option value="James">James Bond</option>
           <option value="Jim">Jim Halpert</option>
         </select>
-        
+        <input
+          type='date'
+        />
+        <input
+          type='time'
+        />
+        <br/>
+        <textarea/>
+        <br/>
+        <button>Add Auto Messsage</button>
       </div>
     </>
   )
