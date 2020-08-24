@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import Form from "./Form.js";
 
 
-const LoginPage = props => {
 
+const LoginPage = props => {
     return(
         <>
             <h2>Login</h2>
