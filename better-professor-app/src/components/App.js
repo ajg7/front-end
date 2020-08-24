@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import '../App.css';
 import { Route, Switch } from "react-router-dom";
+import * as yup from "yup";
+import axios from "axios";
+import formSchema from "../formSchema.js";
 import LoginPage from "./LoginPage.js";
+import Form from "./Form.js";
+
+
+
+const initialFormValues = {
+  name: "",
+  email: "",
+  password: "",
+  className: "",
+  classSection: ""
+}
+
+
+
 
 function App() {
   return (
@@ -9,6 +26,10 @@ function App() {
       <Switch>
         <Route>
           <LoginPage path="/login"/>
+        </Route>
+
+        <Route>
+          <Form path="/form" />
         </Route>
       </Switch>
     </div>

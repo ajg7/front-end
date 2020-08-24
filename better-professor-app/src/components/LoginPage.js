@@ -1,5 +1,6 @@
 import React from "react";
-import Form from "./Form.js"
+import { Link } from "react-router-dom";
+import Form from "./Form.js";
 
 
 const LoginPage = props => {
@@ -7,7 +8,8 @@ const LoginPage = props => {
     return(
         <>
             <h1>Login</h1>
-            <Form />
+            <h3>or Sign Up</h3>
+            <button Link={Form.js}>Sign Up</button>
         </>
     )
 }
