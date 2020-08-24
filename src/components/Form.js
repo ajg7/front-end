@@ -1,14 +1,9 @@
 import React, { useState } from "react";
 import formSchema from "../formSchema";
+import * as yup from "yup";
 
 
-const Form = props => {
-
-    const [prof, setNewProf] = useState(initialProf)
-    const [formValues, setFormValues] = useState(initialFormValues);
-    const [formErrors, setFormErrors] = useState(initialFormErrors);
-
-
+const Form = () => {
 
     const initialFormValues = {
         username: "",
@@ -20,7 +15,10 @@ const Form = props => {
         password: ""
     }
 
-    const initialProf = [];
+
+    const [loginObj, setLoginObj] = useState([]);
+    const [formValues, setFormValues] = useState(initialFormValues);
+    const [formErrors, setFormErrors] = useState(initialFormErrors);
 
     const inputChange = (name, value) => {
         yup
@@ -44,30 +42,52 @@ const Form = props => {
         })
     }
 
+    const onInputChange = event => {
+        const { name, value } = event.target;
+        inputChange(name, value)
+    }
+
     const submit = () => {
-        const newProf ={
+        const newLoginObj ={
             username: formValues.username.trim(),
             password: formValues.password.trim()
         }
-        postNewStudents(newProf)
+        setLoginObj(newLoginObj)
+    }
+
+    const onSubmit = event => {
+        event.preventDefault();
+        submit();
+        console.log(loginObj)
     }
 
 
     return(
         <>
-            <form>
-                <label> Username:
-                    <input 
-                    type="text"
-                    name="username"
-                    />                
-                </label>
-                <label> Password:
-                    <input 
-                    type="password"
-                    name="password"
-                    />
-                </label>
+            <form onSubmit={onSubmit}>
+                <div className="errors">
+                    <div>{formErrors.username}</div>
+                    <div>{formErrors.password}</div>
+                </div>
+                <div>
+                    <label> Username:
+                        <input 
+                        value={formValues.username}
+                        onChange={onInputChange}
+                        type="text"
+                        name="username"
+                        />                
+                    </label>
+                    <label> Password:
+                        <input 
+                        value={formValues.password}
+                        onChange={onInputChange}
+                        type="password"
+                        name="password"
+                        />
+                    </label>
+                </div>
+                <button>Log In</button>
             </form>
         </>
     )
