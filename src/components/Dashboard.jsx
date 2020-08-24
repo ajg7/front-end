@@ -1,13 +1,19 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchStudents } from '../store'
 import { connect } from "react-redux";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const Dashboard = (props) => {
   const history = useHistory()
 
+  const [listStudents, setListStudents] = useState([]);
+
   useEffect(() => {
-    props.fetchStudents()
+    axiosWithAuth().get("https://better--professor.herokuapp.com/users")
+      .then(response => {
+        setListStudents(response.data.data)
+      })
   }, []);
  
   return (
@@ -18,7 +24,7 @@ const Dashboard = (props) => {
       </div>
       <div>
         {
-          props.students.map( s => {
+          listStudents.map( s => {
             return(<div>{s.username}</div>)
           }) 
         }
