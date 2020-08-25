@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import { fetchStudents } from '../store'
+import { connect } from "react-redux";
 
 
-const AddPage = () => {
+const AddPage = (props) => {
+
+  useEffect(() => {
+    props.fetchStudents()
+  }, []);
+
   return (
     <>
       <div>
@@ -33,9 +41,11 @@ const AddPage = () => {
         <h2>Add Auto Message</h2>
         <select id="students" name="students">
           <option value="">Myself</option>
-          <option value="Sam">Sam Fisher</option>
-          <option value="James">James Bond</option>
-          <option value="Jim">Jim Halpert</option>
+          {
+             props.students.map(s => {
+              return (<option value={s.username}>{s.username}</option>)
+             })
+          }
         </select>
         <input
           type='date'
@@ -52,4 +62,11 @@ const AddPage = () => {
   )
 }
 
-export default AddPage
+const mapStateToProps = state => {
+return {
+  students: state.students,    
+  isLoading: state.isLoading,
+  error: state.error, 
+}
+}
+export default connect(mapStateToProps, {fetchStudents})(AddPage)
