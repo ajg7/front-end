@@ -60,7 +60,7 @@ const Form = () => {
         axiosWithAuth().post("/auth/login", existingUser)
             .then(response => {
                 console.log(response)
-                localStorage.setItem("token", response.data.token)
+                localStorage.setItem("token", response.data.token);
                 history.push("/protected");
             })
     }
