@@ -4,6 +4,10 @@ import { fetchStudents } from '../store'
 import { connect } from "react-redux";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
 
+import StudentCard from './StudentCard';
+import MessageCard from './MessageCard';
+import Header from './Header'
+
 const Dashboard = (props) => {
   const history = useHistory()
 
@@ -18,18 +22,29 @@ const Dashboard = (props) => {
  
   return (
     <>
-      <div>
-        <h1>Professor Name</h1>
-        <button onClick={() => history.push('/add')}> + </button>
-      </div>
-      <div>
+    <Header/>
+      <div className='student-list'>
+        <div className='heading'>
+          <h2>Students</h2>
+        </div>
+        <br/>
         {
-          listStudents.map( s => {
-            return(<div>{s.username}</div>)
+          listStudents.map( student => {
+            return(<StudentCard student={student}/>)
           }) 
         }
       </div>
-      
+      <div className='student-list'>
+        <div className='heading'>
+          <h2>Messages</h2>
+        </div>
+        <br/>
+        {
+          listStudents.map( student => {
+            return(<MessageCard student={student}/>)
+          }) 
+        }
+      </div>
     </>
   )
 }
