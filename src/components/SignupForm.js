@@ -59,13 +59,13 @@ const SignupForm = () => {
         event.preventDefault();
         const newUser ={
             username: formValues.username.trim(),
-            password: formValues.password.trim()
+            password: formValues.password.trim(),
+            role: 1
         }
         axiosWithAuth().post("/auth/register", newUser)
             .then(response => {
                 console.log(response)
-                localStorage.setItem("token", response.data.token)
-                history.push("/protected");
+                history.push("/login");
             })
     }
 
