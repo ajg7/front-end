@@ -1,5 +1,15 @@
+@import url(https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap);/*font-family: 'Poppins', sans-serif;*/
+
+body{
+  background:  #f1f1f1;
+}
 .App {
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'Poppins', sans-serif;
 }
 
 .App-logo {
@@ -35,4 +45,66 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.header {
+  border-bottom: 2px solid #282c34;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  text-align: left;
+  background: #3571A7;
+  border-radius: 10px;
+}
+.header h1 {
+  width: 90%;
+  padding-left: 2%;
+}
+.heading{
+  width: 100%;
+}
+.add-button{
+  width: 2%;
+}
+.add-button:hover{
+  cursor: pointer;
+}
+
+.student-list{
+  margin-top: 1%;
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  border-radius: 10px;
+  background: #ffffff;
+  padding: 1%;
+}
+.student-card{
+  width: 15%;
+  border: 2px solid #3571A7;
+  border-radius: 10px;
+  padding: 0.5% 0;
+  margin: 1%;
+  transition: all 0.3s ease-in-out;
+}
+.student-card:hover{
+  cursor: pointer;
+  background: #FFC500;
+  border: 2px solid#FFC500;
+  transition: all 0.3s ease-in-out;
+}
+.add-card-conatiner{
+  display: flex;
+  width: 80%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+.add-card{
+  width: 60%;
+  background:#ffffff;
+  padding: 1%;
+  border-radius: 10px;
+  margin-top: 7%;
 }

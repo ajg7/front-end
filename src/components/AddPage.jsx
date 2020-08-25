@@ -11,8 +11,8 @@ const AddPage = (props) => {
   }, []);
 
   return (
-    <>
-      <div>
+    <div className='add-card-conatiner'>
+      <div className='add-card'>
         <h2>Add Student</h2>
         <input
           type='text'
@@ -22,43 +22,43 @@ const AddPage = (props) => {
         <br/>
         <button>Add Student</button>
       </div>
-      <div>
+      <div className='add-card'>
         <h2>Add Assignment</h2>
         <input
           type='text'
           name='title'
           placeholder='Assignment Title'
         />
-        <input
-          type='text'
-          name='date'
-          placeholder='Due Date'
-        />
+          <input
+            type='date'
+            />
         <br/>
         <button>Add Assignment</button>
       </div>
-      <div>
+      <div className='add-card'>
         <h2>Add Auto Message</h2>
-        <select id="students" name="students">
-          <option value="">Myself</option>
-          {
-             props.students.map(s => {
-              return (<option value={s.username}>{s.username}</option>)
-             })
-          }
-        </select>
-        <input
-          type='date'
-        />
-        <input
-          type='time'
-        />
-        <br/>
-        <textarea/>
-        <br/>
-        <button>Add Auto Messsage</button>
+        <div>
+          <select id="students" name="students">
+            <option value="">Myself</option>
+            {
+              props.students.map(s => {
+                return (<option value={s.username}>{s.username}</option>)
+              })
+            }
+          </select>
+          <input
+            type='date'
+            />
+          <input
+            type='time'
+            />
+          <br/>
+          <textarea/>
+          <br/>
+          <button>Add Auto Messsage</button>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
 

@@ -8,8 +8,11 @@ import AddPage from './components/AddPage'
 import LoginPage from './components/LoginPage'
 import Form from './components/Form'
 import PrivateRoute from './components/PrivateRoute'
-
+import Header from './components/Header'
+import StudentPage from './components/StudentPage';
+import MessagePage from './components/MessagePage';
 import SignupForm from "./components/SignupForm"
+
 
 import './App.css';
 
@@ -19,9 +22,11 @@ function App() {
       <Switch>
         <PrivateRoute exact path="/protected" component={Dashboard} />
         <Route exact path="/" component={LoginPage} /> 
-        <Route exact path="/login" component={Form} /> 
-        <Route exact path="/signup" component={SignupForm} />
+        <Route path="/login" component={Form} /> 
+        <Route path="/signup" component={SignupForm} />
         <Route path="/add" component={AddPage} />
+        <Route path="/student-page" component={StudentPage} />
+        <Route path="/message-page" component={MessagePage} />
       </Switch>
     </div>
   );
