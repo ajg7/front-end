@@ -9,16 +9,6 @@ import Form from "./Form.js";
 
 
 
-const initialFormValues = {
-  name: "",
-  email: "",
-  password: "",
-  className: "",
-  classSection: ""
-}
-
-
-
 
 function App() {
   return (

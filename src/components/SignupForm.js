@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import formSchema from "../formSchema";
 import axios from "axios";
 import * as yup from "yup";
@@ -23,16 +23,26 @@ const SignupForm = () => {
     }
 
 
-    const [loginObj, setLoginObj] = useState({});
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
+    const [disabled, setDisabled] = useState(true);
+
+    useEffect(() =>{
+        formSchema.isValid(formValues)
+            .then(valid => {
+                setDisabled(!valid)
+            })
+    }, [formValues])
 
 
-    const inputChange = (name, value) => {
+    const inputChange = event => {
+        const { name, value } = event.target;
         yup
             .reach(formSchema, name)
             .validate(value)
             .then(valid => {
+                console.log(value)
+                console.log(valid)
                 setFormErrors({
                     ...formErrors,
                     [name]: ""
@@ -48,11 +58,6 @@ const SignupForm = () => {
             ...formValues,
             [name]: value
         })
-    }
-
-    const onInputChange = event => {
-        const { name, value } = event.target;
-        inputChange(name, value)
     }
 
     const submit = event => {
@@ -82,7 +87,7 @@ const SignupForm = () => {
                     <label> Username:
                         <input 
                         value={formValues.username}
-                        onChange={onInputChange}
+                        onChange={inputChange}
                         type="text"
                         name="username"
                         />                
@@ -90,13 +95,13 @@ const SignupForm = () => {
                     <label> Password:
                         <input 
                         value={formValues.password}
-                        onChange={onInputChange}
+                        onChange={inputChange}
                         type="password"
                         name="password"
                         />
                     </label>
                 </div>
-                <button>Log In</button>
+                <button disabled={disabled}>Sign Up</button>
             </form>
         </>
     )
