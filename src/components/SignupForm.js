@@ -23,7 +23,6 @@ const SignupForm = () => {
     }
 
 
-    const [loginObj, setLoginObj] = useState({});
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
 
@@ -96,7 +95,7 @@ const SignupForm = () => {
                         />
                     </label>
                 </div>
-                <button>Log In</button>
+                <button>Sign Up</button>
             </form>
         </>
     )
