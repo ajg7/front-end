@@ -10,7 +10,7 @@ export const StyledForm = styled.div`
 
     .form-labels {
         border: 3px solid black;
-        padding: 0 10px;
+        padding: 10px 10px;
         &:hover {
             background-color: ${({ theme }) => theme.secondaryColor};
             color: ${({ theme }) => theme.primaryColor};

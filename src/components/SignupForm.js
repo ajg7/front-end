@@ -8,8 +8,8 @@ import styled from "styled-components";
 
 const StyledSignupFrom = styled.div`
     .form-labels {
-        border: 3px solid ${({ theme }) => theme.secondaryColor};
-        padding: 0 10px;
+        border: 3px solid black;
+        padding: 10px 10px;
 
         &:hover {
             background-color: ${({ theme }) => theme.secondaryColor};
@@ -26,6 +26,7 @@ const StyledSignupFrom = styled.div`
     button {
         border: 4px solid ${({ theme }) => theme.primaryColor};
         border-radius: 20px;
+        text-align: center;
         color: ${({ theme }) => theme.primaryColor};
         background-color: ${({ theme }) => theme.offWhite};
         font-weight: bold;
@@ -139,10 +140,10 @@ const SignupForm = () => {
                                     />
                                 </label>
                             </div>
-                        </div>
                             <div>
                                 <button disabled={disabled}>Submit</button>
                             </div>
+                        </div>
                     </StyledSignupFrom>
                     </form>
         </>
