@@ -32,7 +32,6 @@ const StyledSignupFrom = styled.div`
             transition: all 0.3s ease-in-out;
         }
     }
-
 `
 
 
@@ -56,6 +55,7 @@ const SignupForm = () => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(true);
+    const [text, setText] = useState("");
 
     useEffect(() =>{
         formSchema.isValid(formValues)
@@ -67,12 +67,11 @@ const SignupForm = () => {
 
     const inputChange = event => {
         const { name, value } = event.target;
+        setText(value);
         yup
             .reach(formSchema, name)
             .validate(value)
             .then(valid => {
-                console.log(value)
-                console.log(valid)
                 setFormErrors({
                     ...formErrors,
                     [name]: ""
@@ -104,7 +103,7 @@ const SignupForm = () => {
             })
     }
 
-
+console.log(text.length)
 
     return(
         <>
