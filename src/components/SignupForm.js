@@ -3,7 +3,8 @@ import formSchema from "../formSchema";
 import axios from "axios";
 import * as yup from "yup";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import StyledForm from "./Form.js";
 
 
 
@@ -67,7 +68,7 @@ const SignupForm = () => {
             password: formValues.password.trim(),
             role: 1
         }
-        axiosWithAuth().post("/auth/register", newUser)
+        axios.post("https://better--professor.herokuapp.com", newUser)
             .then(response => {
                 console.log(response)
                 history.push("/login");
@@ -78,31 +79,36 @@ const SignupForm = () => {
 
     return(
         <>
-            <form onSubmit={submit}>
-                <div className="errors">
-                    <div>{formErrors.username}</div>
-                    <div>{formErrors.password}</div>
-                </div>
-                <div>
-                    <label> Username:
-                        <input 
-                        value={formValues.username}
-                        onChange={inputChange}
-                        type="text"
-                        name="username"
-                        />                
-                    </label>
-                    <label> Password:
-                        <input 
-                        value={formValues.password}
-                        onChange={inputChange}
-                        type="password"
-                        name="password"
-                        />
-                    </label>
-                </div>
-                <button disabled={disabled}>Sign Up</button>
-            </form>
+            <h1>Sign Up</h1>
+                <form onSubmit={submit}>
+                    <div className="errors">
+                        <div>{formErrors.username}</div>
+                        <div>{formErrors.password}</div>
+                    </div>
+                <StyledForm>
+                    <div>
+                        <label> Username:
+                            <input 
+                            value={formValues.username}
+                            onChange={inputChange}
+                            type="text"
+                            name="username"
+                            placeholder="Username"
+                            />                
+                        </label>
+                        <label> Password:
+                            <input 
+                            value={formValues.password}
+                            onChange={inputChange}
+                            type="password"
+                            name="password"
+                            placeholder="Password"
+                            />
+                        </label>
+                    </div>
+                        <button disabled={disabled}>Submit</button>
+                </StyledForm>
+                    </form>
         </>
     )
 }
