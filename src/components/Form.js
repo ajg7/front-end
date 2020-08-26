@@ -9,8 +9,12 @@ import styled from "styled-components";
 export const StyledForm = styled.div`
 
     .form-labels {
-        border: 3px solid ${({ theme }) => theme.secondaryColor};
-        background-color: ${({ theme }) => theme.secondaryColor};
+        border: 3px solid black;
+        &:hover {
+            background-color: ${({ theme }) => theme.secondaryColor};
+            color: ${({ theme }) => theme.primaryColor};
+            font-weight: bold;
+        }
     }
     label {
         display: flex;
