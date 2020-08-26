@@ -4,7 +4,36 @@ import axios from "axios";
 import * as yup from "yup";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
-import StyledForm from "./Form.js";
+import styled from "styled-components";
+
+
+const StyledSignupFrom = styled.div`
+    .form-labels {
+        border: 3px solid ${({ theme }) => theme.secondaryColor};
+        background-color: ${({ theme }) => theme.secondaryColor};
+    }
+    label {
+        display: flex;
+        justify-content: center;
+        padding: ${({ theme }) => theme.space};
+    }
+
+    button {
+        border: 4px solid ${({ theme }) => theme.primaryColor};
+        border-radius: 20px;
+        text-align: center;
+        color: ${({ theme }) => theme.primaryColor};
+        background-color: ${({ theme }) => theme.offWhite};
+        font-weight: bold;
+
+        &:hover {
+            color: ${({ theme }) => theme.offWhite};
+            background-color: ${({ theme }) => theme.primaryColor};
+            transition: all 0.3s ease-in-out;
+        }
+    }
+
+`
 
 
 
@@ -85,29 +114,35 @@ const SignupForm = () => {
                         <div>{formErrors.username}</div>
                         <div>{formErrors.password}</div>
                     </div>
-                <StyledForm>
-                    <div>
-                        <label> Username:
-                            <input 
-                            value={formValues.username}
-                            onChange={inputChange}
-                            type="text"
-                            name="username"
-                            placeholder="Username"
-                            />                
-                        </label>
-                        <label> Password:
-                            <input 
-                            value={formValues.password}
-                            onChange={inputChange}
-                            type="password"
-                            name="password"
-                            placeholder="Password"
-                            />
-                        </label>
-                    </div>
-                        <button disabled={disabled}>Submit</button>
-                </StyledForm>
+                    <StyledSignupFrom>
+                        <div className="form-labels">
+                            <div>
+                                <label> Username:
+                                    <input 
+                                    value={formValues.username}
+                                    onChange={inputChange}
+                                    type="text"
+                                    name="username"
+                                    placeholder="Username"
+                                    />                
+                                </label>
+                            </div>
+                            <div>
+                                <label> Password:
+                                    <input 
+                                    value={formValues.password}
+                                    onChange={inputChange}
+                                    type="password"
+                                    name="password"
+                                    placeholder="Password"
+                                    />
+                                </label>
+                            </div>
+                        </div>
+                            <div>
+                                <button disabled={disabled}>Submit</button>
+                            </div>
+                    </StyledSignupFrom>
                     </form>
         </>
     )
