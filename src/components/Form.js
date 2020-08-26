@@ -20,6 +20,7 @@ export const StyledForm = styled.div`
     label {
         display: flex;
         justify-content: center;
+        padding: ${({ theme }) => theme.space};
     }
 
     button {
