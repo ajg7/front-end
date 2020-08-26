@@ -1,2 +1,2 @@
 export { professorReducer } from "./reducers";
-export { fetchStudents} from "./actions";
+export { fetchStudents, sortStudents} from "./actions";

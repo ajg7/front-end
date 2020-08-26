@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { fetchStudents } from '../store'
 import { connect } from "react-redux";
 import { axiosWithAuth } from '../utils/axiosWithAuth';
@@ -10,12 +10,14 @@ import Header from './Header'
 
 const Dashboard = (props) => {
   const history = useHistory()
-
+console.log(props.students);
   const [listStudents, setListStudents] = useState([]);
-
+  const id = 1
   useEffect(() => {
-    axiosWithAuth().get("https://better--professor.herokuapp.com/users")
+    props.fetchStudents(id)
+    axiosWithAuth().get(`/professor/${id}/students`)
       .then(response => {
+        console.log(response);
         setListStudents(response.data.data)
       })
   }, []);

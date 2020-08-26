@@ -1,14 +1,50 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { fetchStudents } from '../store'
 import { connect } from "react-redux";
+import { axiosWithAuth } from '../utils/axiosWithAuth';
+
+const initFormValues = {
+  addName: '',
+  addProject: '',
+  projectDate: '',
 
 
+}
 const AddPage = (props) => {
+const [formValues, setFormValues] = useState(initFormValues)
 
   useEffect(() => {
     props.fetchStudents()
   }, []);
+
+  const handleOnChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const createNewStudent = (e) => {
+    e.preventDefault()
+    const newStudent = {
+      name: formValues.addName,
+      student: `${Math.floor(Math.random() * 1000)}`
+    }
+    axiosWithAuth()
+      .post('/professor/1/students', newStudent)
+      .then(res => {
+        console.log(res)
+      })
+  }
+
+  const createNewAssignment = () => {
+
+  }
+
+  const createNewAutoMessage = () => {
+
+  }
 
   return (
     <div className='add-card-conatiner'>
@@ -16,11 +52,13 @@ const AddPage = (props) => {
         <h2>Add Student</h2>
         <input
           type='text'
-          name='name'
+          name='addName'
           placeholder='Student Name'
+          value={formValues.addName}
+          onChange={handleOnChange}
         />
         <br/>
-        <button>Add Student</button>
+        <button onClick={createNewStudent}>Add Student</button>
       </div>
       <div className='add-card'>
         <h2>Add Assignment</h2>

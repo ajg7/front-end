@@ -1,8 +1,14 @@
-import { FETCH_STUDENTS_START,FETCH_STUDENTS_SUCCESS } from '../actions'
+import { 
+  FETCH_STUDENTS_START,
+  FETCH_STUDENTS_SUCCESS,
+  SORT_STUDENTS,
+} from '../actions'
+
 const initalState = {
   students: [],
   isLoading: true,
-  error: ''
+  error: '',
+  currentStudent:[]
 }
 
 export const professorReducer = (state = initalState, action) => {
@@ -20,8 +26,11 @@ export const professorReducer = (state = initalState, action) => {
         students: action.payload,
         isLoading: false,
       }
-      
-      
+    case SORT_STUDENTS:
+      return{
+        ...state,
+        currentStudent: state.students.filter( student => student.id == action.payload)
+      }
     default:
       return state
   }

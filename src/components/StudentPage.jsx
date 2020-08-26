@@ -1,18 +1,40 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import { useParams } from 'react-router-dom';
 
-const StudentPage = () => {
+import {sortStudents} from '../store'
+
+const StudentPage = (props) => {
+  console.log(props);
+  const id = useParams().id
+
+  useEffect(() => {
+    props.sortStudents(id)
+  }, [])
+
+  console.log(props.currentStudent);
+
   return (
     <>
-      <div>
-        <h2>Student Name</h2>
-      </div>
-      <ul>
-        <li>assignment 1</li>
-        <li>assignment 1</li>
-        <li>assignment 1</li>
-      </ul>
+      {
+        props.currentStudent.map(s => {
+          return(
+            <>
+              <h2>{s.name}</h2>
+              <h2>student-id: {s.id}</h2>
+              <h2>professor: {s.professor}</h2>
+              <h2>student: {s.student}</h2>
+            </>
+          )
+        })
+      }
     </>
   );
 }
+const mapStateToProps = state => {
+  return {
+    currentStudent: state.currentStudent
+  }
+}
+export default connect(mapStateToProps, {sortStudents})(StudentPage)
 
-export default StudentPage;
