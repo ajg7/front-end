@@ -5,6 +5,14 @@ import styled from "styled-components";
 
 const StyledLoginPage = styled.div`
 
+    div {
+        border: 2px solid black;
+    }
+
+    h2 {
+        padding: 10px 10px;
+    }
+
     h2:hover {
         color: ${({ theme }) => theme.secondaryColor}
     }
