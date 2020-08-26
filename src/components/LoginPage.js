@@ -1,16 +1,40 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Form from "./Form.js";
+import styled from "styled-components";
 
+const StyledLoginPage = styled.div`
 
+    h2:hover {
+        color: ${({ theme }) => theme.secondaryColor}
+    }
+
+    button {
+        border: 4px solid ${({ theme }) => theme.primaryColor};
+        border-radius: 20px;
+        color: ${({ theme }) => theme.primaryColor};
+        background-color: ${({ theme }) => theme.offWhite};
+        font-weight: bold;
+
+        &:hover {
+            color: ${({ theme }) => theme.offWhite};
+            background-color: ${({ theme }) => theme.primaryColor};
+            transition: all 0.3s ease-in-out;
+        }
+    }
+`
 
 const LoginPage = props => {
     return(
         <>
-            <h2>Login</h2>
-            <Link to="/login"><button>Log In</button></Link>
-            <h2>Sign Up</h2>
-            <Link to ="/signup"><button>Sign Up</button></Link>
+            <StyledLoginPage>
+                <div>
+                    <h2>Login</h2>
+                    <Link to="/login"><button>Log In</button></Link>
+                    <h2>Sign Up</h2>
+                    <Link to ="/signup"><button>Sign Up</button></Link>
+                </div>
+            </StyledLoginPage>
         </>
     )
 }

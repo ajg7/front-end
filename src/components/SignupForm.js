@@ -6,7 +6,6 @@ import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
-
 const StyledSignupFrom = styled.div`
     .form-labels {
         border: 3px solid ${({ theme }) => theme.secondaryColor};
@@ -54,7 +53,6 @@ const SignupForm = () => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(true);
-    const [text, setText] = useState("");
 
     useEffect(() =>{
         formSchema.isValid(formValues)
@@ -66,7 +64,6 @@ const SignupForm = () => {
 
     const inputChange = event => {
         const { name, value } = event.target;
-        setText(value);
         yup
             .reach(formSchema, name)
             .validate(value)
@@ -102,8 +99,6 @@ const SignupForm = () => {
             })
     }
 
-console.log(text.length)
-
     return(
         <>
             <h1>Sign Up</h1>
@@ -117,6 +112,7 @@ console.log(text.length)
                             <div>
                                 <label> Username:
                                     <input 
+                                    correct={false}
                                     value={formValues.username}
                                     onChange={inputChange}
                                     type="text"
@@ -128,6 +124,7 @@ console.log(text.length)
                             <div>
                                 <label> Password:
                                     <input 
+                                    correct={true}
                                     value={formValues.password}
                                     onChange={inputChange}
                                     type="password"
