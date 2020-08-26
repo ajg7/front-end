@@ -2,8 +2,36 @@ import React, { useState, useEffect } from "react";
 import formSchema from "../formSchema";
 import * as yup from "yup";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
-import { useHistory } from "react-router-dom"
+import { useHistory } from "react-router-dom";
+import styled from "styled-components";
 
+
+export const StyledForm = styled.div`
+    .form-labels {
+        border: 3px solid ${({ theme }) => theme.secondaryColor};
+        background-color: ${({ theme }) => theme.secondaryColor};
+    }
+    label {
+        display: flex;
+        justify-content: center;
+        padding: ${({ theme }) => theme.space};
+    }
+
+    button {
+        border: 4px solid ${({ theme }) => theme.primaryColor};
+        border-radius: 20px;
+        text-align: center;
+        color: ${({ theme }) => theme.primaryColor};
+        background-color: ${({ theme }) => theme.offWhite};
+        font-weight: bold;
+
+        &:hover {
+            color: ${({ theme }) => theme.offWhite};
+            background-color: ${({ theme }) => theme.primaryColor};
+            transition: all 0.3s ease-in-out;
+        }
+    }
+`
 
 const Form = () => {
 
@@ -73,31 +101,42 @@ const Form = () => {
 
     return(
         <>
-            <form onSubmit={submit}>
-                <div className="errors">
-                    <div>{formErrors.username}</div>
-                    <div>{formErrors.password}</div>
-                </div>
-                <div>
-                    <label> Username:
-                        <input 
-                        value={formValues.username}
-                        onChange={inputChange}
-                        type="text"
-                        name="username"
-                        />                
-                    </label>
-                    <label> Password:
-                        <input 
-                        value={formValues.password}
-                        onChange={inputChange}
-                        type="password"
-                        name="password"
-                        />
-                    </label>
-                </div>
-                <button disabled={disabled}>Log In</button>
-            </form>
+            <h1>Log In</h1>
+                <form onSubmit={submit}>
+                    <div className="errors">
+                        <div>{formErrors.username}</div>
+                        <div>{formErrors.password}</div>
+                    </div>
+                    <StyledForm>
+                        <div className="form-labels">
+                            <div>
+                                <label> Username:
+                                    <input 
+                                    value={formValues.username}
+                                    onChange={inputChange}
+                                    type="text"
+                                    name="username"
+                                    placeholder= "Username"
+                                    />                
+                                </label>
+                            </div>
+                            <div>
+                                <label> Password:
+                                    <input 
+                                    value={formValues.password}
+                                    onChange={inputChange}
+                                    type="password"
+                                    name="password"
+                                    placeholder = "Password"
+                                    />
+                                </label>
+                            </div>
+                            <div>
+                                <button disabled={disabled}>Submit</button>
+                            </div>
+                        </div>
+                    </StyledForm>
+                </form>
         </>
     )
 }
