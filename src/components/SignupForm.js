@@ -9,7 +9,8 @@ import styled from "styled-components";
 const StyledSignupFrom = styled.div`
     .form-labels {
         border: 3px solid ${({ theme }) => theme.secondaryColor};
-        
+        padding: 0 10px;
+
         &:hover {
             background-color: ${({ theme }) => theme.secondaryColor};
             color: ${({ theme }) => theme.primaryColor};

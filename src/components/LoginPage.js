@@ -7,6 +7,7 @@ const StyledLoginPage = styled.div`
 
     div {
         border: 2px solid black;
+        padding: 10px 10px;
 
         &:hover {
             background-color: ${({ theme }) => theme.secondaryColor};
@@ -14,10 +15,6 @@ const StyledLoginPage = styled.div`
                 color: ${({ theme }) => theme.primaryColor};
             }
         }
-    }
-
-    h2 {
-        padding: 10px 10px;
     }
 
     button {
