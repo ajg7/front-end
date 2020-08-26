@@ -21,7 +21,6 @@ const StyledSignupFrom = styled.div`
     button {
         border: 4px solid ${({ theme }) => theme.primaryColor};
         border-radius: 20px;
-        text-align: center;
         color: ${({ theme }) => theme.primaryColor};
         background-color: ${({ theme }) => theme.offWhite};
         font-weight: bold;
