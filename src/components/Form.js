@@ -7,6 +7,7 @@ import styled from "styled-components";
 
 
 export const StyledForm = styled.div`
+
     .form-labels {
         border: 3px solid ${({ theme }) => theme.secondaryColor};
         background-color: ${({ theme }) => theme.secondaryColor};
