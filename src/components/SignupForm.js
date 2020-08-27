@@ -4,42 +4,9 @@ import axios from "axios";
 import * as yup from "yup";
 import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
-import styled from "styled-components";
+import { StyledForm } from "../theme/index";
 
-const StyledSignupFrom = styled.div`
-    .form-labels {
-        border: 3px solid black;
-        padding: 10px 10px;
-
-        &:hover {
-            background-color: ${({ theme }) => theme.secondaryColor};
-            color: ${({ theme }) => theme.primaryColor};
-            font-weight: bold;
-        }
-    }
-    label {
-        display: flex;
-        justify-content: center;
-        padding: ${({ theme }) => theme.space};
-    }
-
-    button {
-        border: 4px solid ${({ theme }) => theme.primaryColor};
-        border-radius: 20px;
-        text-align: center;
-        color: ${({ theme }) => theme.primaryColor};
-        background-color: ${({ theme }) => theme.offWhite};
-        font-weight: bold;
-
-        &:hover {
-            color: ${({ theme }) => theme.offWhite};
-            background-color: ${({ theme }) => theme.primaryColor};
-            transition: all 0.3s ease-in-out;
-        }
-    }
-`
-
-
+const StyledSignupFrom = StyledForm;
 
 const SignupForm = () => {
 
@@ -113,37 +80,35 @@ const SignupForm = () => {
                         <div>{formErrors.username}</div>
                         <div>{formErrors.password}</div>
                     </div>
-                    <StyledSignupFrom>
-                        <div className="form-labels">
-                            <div>
-                                <label> Username:
-                                    <input 
-                                    correct={false}
-                                    value={formValues.username}
-                                    onChange={inputChange}
-                                    type="text"
-                                    name="username"
-                                    placeholder="Username"
-                                    />                
-                                </label>
+                        <StyledSignupFrom>
+                            <div className="form-labels">
+                                <div>
+                                    <label> Username:
+                                        <input 
+                                        value={formValues.username}
+                                        onChange={inputChange}
+                                        type="text"
+                                        name="username"
+                                        placeholder="Username"
+                                        />                
+                                    </label>
+                                </div>
+                                <div>
+                                    <label> Password:
+                                        <input 
+                                        value={formValues.password}
+                                        onChange={inputChange}
+                                        type="password"
+                                        name="password"
+                                        placeholder="Password"
+                                        />
+                                    </label>
+                                </div>
+                                <div>
+                                    <button disabled={disabled}>Submit</button>
+                                </div>
                             </div>
-                            <div>
-                                <label> Password:
-                                    <input 
-                                    correct={true}
-                                    value={formValues.password}
-                                    onChange={inputChange}
-                                    type="password"
-                                    name="password"
-                                    placeholder="Password"
-                                    />
-                                </label>
-                            </div>
-                            <div>
-                                <button disabled={disabled}>Submit</button>
-                            </div>
-                        </div>
-                    </StyledSignupFrom>
+                        </StyledSignupFrom>
                     </form>
         </>
     )

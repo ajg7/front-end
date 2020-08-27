@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter as Router} from 'react-router-dom';
 import { ThemeProvider } from "styled-components";
-import theme from "./theme/index.js";
+import { theme } from "../src/theme/index";
 
 import { createStore, applyMiddleware } from "redux";
 import { Provider } from "react-redux";
