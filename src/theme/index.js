@@ -18,6 +18,7 @@ export const StyledForm = styled.div`
             font-weight: bold;
         }
     }
+    
     label {
         display: flex;
         justify-content: center;
