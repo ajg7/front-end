@@ -98,7 +98,7 @@ const SignupForm = () => {
             password: formValues.password.trim(),
             role: 1
         }
-        axios.post("https://better--professor.herokuapp.com", newUser)
+        axios.post("https://better--professor.herokuapp.com/auth/login", newUser)
             .then(response => {
                 console.log(response)
                 history.push("/login");
