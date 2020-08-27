@@ -68,7 +68,6 @@ const SignupForm = () => {
             })
     }, [formValues])
 
-
     const inputChange = event => {
         const { name, value } = event.target;
         yup
