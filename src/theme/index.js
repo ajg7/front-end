@@ -7,6 +7,8 @@ export const theme = {
     space: "10px 0px",
 }
 
+//The Form Style Component
+
 export const StyledForm = styled.div`
 
     .form-labels {
@@ -40,6 +42,9 @@ export const StyledForm = styled.div`
         }
     }
 `
+
+//The Login/Signup Page Style Component
+
 export const StyledPage = styled.div`
 
     div {
