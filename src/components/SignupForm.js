@@ -6,16 +6,11 @@ import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 
+
 const StyledSignupFrom = styled.div`
     .form-labels {
-        border: 3px solid black;
-        padding: 10px 10px;
-
-        &:hover {
-            background-color: ${({ theme }) => theme.secondaryColor};
-            color: ${({ theme }) => theme.primaryColor};
-            font-weight: bold;
-        }
+        border: 3px solid ${({ theme }) => theme.secondaryColor};
+        background-color: ${({ theme }) => theme.secondaryColor};
     }
     label {
         display: flex;
@@ -26,7 +21,6 @@ const StyledSignupFrom = styled.div`
     button {
         border: 4px solid ${({ theme }) => theme.primaryColor};
         border-radius: 20px;
-        text-align: center;
         color: ${({ theme }) => theme.primaryColor};
         background-color: ${({ theme }) => theme.offWhite};
         font-weight: bold;
@@ -60,6 +54,7 @@ const SignupForm = () => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(true);
+    const [text, setText] = useState("");
 
     useEffect(() =>{
         formSchema.isValid(formValues)
@@ -68,8 +63,10 @@ const SignupForm = () => {
             })
     }, [formValues])
 
+
     const inputChange = event => {
         const { name, value } = event.target;
+        setText(value);
         yup
             .reach(formSchema, name)
             .validate(value)
@@ -98,12 +95,14 @@ const SignupForm = () => {
             password: formValues.password.trim(),
             role: 1
         }
-        axios.post("https://better--professor.herokuapp.com/auth/login", newUser)
+        axios.post("https://better--professor.herokuapp.com/auth/register", newUser)
             .then(response => {
                 console.log(response)
                 history.push("/login");
             })
     }
+
+console.log(text.length)
 
     return(
         <>
@@ -118,7 +117,6 @@ const SignupForm = () => {
                             <div>
                                 <label> Username:
                                     <input 
-                                    correct={false}
                                     value={formValues.username}
                                     onChange={inputChange}
                                     type="text"
@@ -130,7 +128,6 @@ const SignupForm = () => {
                             <div>
                                 <label> Password:
                                     <input 
-                                    correct={true}
                                     value={formValues.password}
                                     onChange={inputChange}
                                     type="password"
@@ -139,10 +136,10 @@ const SignupForm = () => {
                                     />
                                 </label>
                             </div>
+                        </div>
                             <div>
                                 <button disabled={disabled}>Submit</button>
                             </div>
-                        </div>
                     </StyledSignupFrom>
                     </form>
         </>

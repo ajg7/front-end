@@ -4,8 +4,8 @@ import { useHistory } from 'react-router-dom'
 const MessageCard = (props) => {
   const history = useHistory()
   return (
-    <div onClick={() => history.push('/message-page')} className='student-card'>
-      <h4>message title</h4>
+    <div onClick={() => history.push(`/message-page/${props.message.id}`)} className='student-card'>
+      <h4>{props.message.message}</h4>
     </div>
   )
 }

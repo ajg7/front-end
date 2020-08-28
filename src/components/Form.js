@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import formSchema from "../formSchema";
 import * as yup from "yup";
-import {axiosWithAuth} from "../utils/axiosWithAuth";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+import axios from "axios";
 
 
 export const StyledForm = styled.div`
@@ -96,10 +96,11 @@ const Form = () => {
             username: formValues.username.trim(),
             password: formValues.password.trim()
         }
-        axiosWithAuth().post("/auth/login", existingUser)
+        axios.post("https://better--professor.herokuapp.com/auth/login", existingUser)
             .then(response => {
                 console.log(response)
                 localStorage.setItem("token", response.data.token);
+                localStorage.setItem("user_id", response.data.user.id)
                 history.push("/protected");
             })
     }
