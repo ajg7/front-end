@@ -10,15 +10,25 @@ import Header from './Header'
 
 const Dashboard = (props) => {
   const history = useHistory()
-console.log(props.students);
+  console.log(props.students);
+  
   const [listStudents, setListStudents] = useState([]);
-  const id = 1
+  const [listMessages, setListMessages] = useState([]);
+  const id = localStorage.getItem('user_id')
+
+
   useEffect(() => {
     props.fetchStudents(id)
-    axiosWithAuth().get(`/professor/${id}/students`)
+    axiosWithAuth()
+      .get(`/professor/${id}/students`)
       .then(response => {
         console.log(response);
         setListStudents(response.data.data)
+      })
+    axiosWithAuth()
+      .get("/messages")
+      .then( res => {
+        setListMessages(res.data.data)
       })
   }, []);
  
@@ -42,8 +52,8 @@ console.log(props.students);
         </div>
         <br/>
         {
-          listStudents.map( student => {
-            return(<MessageCard student={student}/>)
+          listMessages.map( message => {
+            return(<MessageCard message={message}/>)
           }) 
         }
       </div>

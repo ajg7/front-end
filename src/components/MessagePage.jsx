@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom'
+import { axiosWithAuth } from '../utils/axiosWithAuth';
 
 const MessagePage = () => {
+  const messageId = useParams()
+  useEffect(() => {
+    axiosWithAuth()
+      .get()
+      .then(res => {
+        console.log(res)
+      })
+  }, []);
   return (
     <>
       <div className='message-card'>

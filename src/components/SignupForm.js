@@ -27,6 +27,7 @@ const SignupForm = () => {
     const [formValues, setFormValues] = useState(initialFormValues);
     const [formErrors, setFormErrors] = useState(initialFormErrors);
     const [disabled, setDisabled] = useState(true);
+    const [text, setText] = useState("");
 
     useEffect(() =>{
         formSchema.isValid(formValues)
@@ -35,8 +36,10 @@ const SignupForm = () => {
             })
     }, [formValues])
 
+
     const inputChange = event => {
         const { name, value } = event.target;
+        setText(value);
         yup
             .reach(formSchema, name)
             .validate(value)
@@ -65,12 +68,14 @@ const SignupForm = () => {
             password: formValues.password.trim(),
             role: 1
         }
-        axios.post("https://better--professor.herokuapp.com/auth/login", newUser)
+        axios.post("https://better--professor.herokuapp.com/auth/register", newUser)
             .then(response => {
                 console.log(response)
                 history.push("/login");
             })
     }
+
+console.log(text.length)
 
     return(
         <>
