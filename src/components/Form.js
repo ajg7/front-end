@@ -4,40 +4,11 @@ import * as yup from "yup";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import axios from "axios";
+import { StyledForm } from "../theme/index";
 
 
-export const StyledForm = styled.div`
 
-    .form-labels {
-        border: 3px solid black;
-        padding: 10px 10px;
-        &:hover {
-            background-color: ${({ theme }) => theme.secondaryColor};
-            color: ${({ theme }) => theme.primaryColor};
-            font-weight: bold;
-        }
-    }
-    label {
-        display: flex;
-        justify-content: center;
-        padding: ${({ theme }) => theme.space};
-    }
-
-    button {
-        border: 4px solid ${({ theme }) => theme.primaryColor};
-        border-radius: 20px;
-        text-align: center;
-        color: ${({ theme }) => theme.primaryColor};
-        background-color: ${({ theme }) => theme.offWhite};
-        font-weight: bold;
-
-        &:hover {
-            color: ${({ theme }) => theme.offWhite};
-            background-color: ${({ theme }) => theme.primaryColor};
-            transition: all 0.3s ease-in-out;
-        }
-    }
-`
+const StyledLoginForm = StyledForm;
 
 const Form = () => {
 
@@ -114,7 +85,7 @@ const Form = () => {
                         <div>{formErrors.username}</div>
                         <div>{formErrors.password}</div>
                     </div>
-                    <StyledForm>
+                    <StyledLoginForm>
                         <div className="form-labels">
                             <div>
                                 <label> Username:
@@ -142,7 +113,7 @@ const Form = () => {
                                 <button disabled={disabled}>Submit</button>
                             </div>
                         </div>
-                    </StyledForm>
+                    </StyledLoginForm>
                 </form>
         </>
     )
